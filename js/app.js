@@ -25,7 +25,7 @@ function getCocktails(e) {
     //Check something is on the searcg input
     if(searchTerm === ''){
        //Call user interface print message
-       ui.printMessage();
+       ui.printMessage('Please add something into the form', 'danger');
     } else {
         console.log('Query the Rest API');
     }      
