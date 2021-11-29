@@ -1,6 +1,30 @@
 class UI {
 
 
+    //Displays the cocktails without ingredients
+    displayDrinks(drinks) {
+         //Show the Results
+         const resultsWrapper = document.querySelector('.results-wrapper');
+         resultsWrapper.style.display = 'block';
+
+         //Insert the Result
+            const resultsDiv = document.querySelector('#results');
+
+            //Loop through drinks
+            drinks.forEach(drink => {
+                resultsDiv.innerHTML += `
+                    <div class="col-md-4">
+                        <div class"card my-3">
+                        <img class="card-img-top" src="http://${drink.strDrinkThumb}" alt="${drink.strDrink}">
+                        <div class="card-body">
+                              <h2 class="card-title text-center">${drink.strDrink}</h2>
+                              < a class="btn btn-success" href="#" data-toggle="modal" data-id="${drink.idDrink}">Get Recipe</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            })
+    }
     //Display Drinks with Ingredients
     displayDrinksWithIngredients(drinks) {
         
@@ -93,5 +117,11 @@ class UI {
         setTimeout(() => {
             document.querySelector('.alert').remove();
         }, 3000);
+    }
+
+    //Clear previous result
+    clearResults() {
+        const resultsDiv = document.querySelector('#results');
+        resultsDiv.innerHTML = '';
     }
 }

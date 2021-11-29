@@ -45,6 +45,8 @@ function getCocktails(e) {
                 break;
         }
 
+        ui.clearResults();
+        
         //Query by the name of the drink
 
             serverResponse.then(cocktails => {
