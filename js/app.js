@@ -11,7 +11,16 @@ function eventListeners() {
     const searcForm = document.querySelector('#search-form');
     if(searcForm){
         searcForm.addEventListener('submit', getCocktails);
-}
+    }
+
+    //The results div listener
+    const resultsDiv = document.querySelector('#results');
+    if(resultsDiv) {
+        resultsDiv.addEventListener('click', resultsDelegation);
+    }
+
+
+
     }
     
 
@@ -46,7 +55,7 @@ function getCocktails(e) {
         }
 
         ui.clearResults();
-        
+
         //Query by the name of the drink
 
             serverResponse.then(cocktails => {
@@ -66,4 +75,16 @@ function getCocktails(e) {
                }
             })
     }      
+}
+
+//Delegation for the results area
+function resultsDelegation(e) {
+    e.preventDefault();
+
+    if(e.target.classList.contains('get-recipe')) {
+        cocktail.getSingleRecipe(e.target.dataset.id)
+            .then(recipe => {
+                console.log(recipe);
+            })
+    } 
 }
