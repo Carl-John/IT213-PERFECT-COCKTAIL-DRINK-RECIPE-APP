@@ -40,6 +40,9 @@ function getCocktails(e) {
             case 'name':
                 serverResponse = cocktail.getDrinksByName(searchTerm);
                 break;
+            case 'ingredient':
+                serverResponse = cocktail.getDrinksByIngredient(searchTerm);
+                break;
         }
 
         //Query by the name of the drink
@@ -49,7 +52,14 @@ function getCocktails(e) {
                    //Nothing Exist
                    ui.printMessage('There\'re no results, try a different term', 'danger');
                } else {
-                   ui.displayDrinksWithIngredients(cocktails.cocktails.drinks);
+                   if(type === 'name') {
+                       //Display with Ingredients
+                       ui.displayDrinksWithIngredients(cocktails.cocktails.drinks);
+                   } else {
+                       //Display without Ingredients(category, alcohol, ingredient)
+                       ui.displayDrink(cocktails.cocktails.drinks);
+
+                   }
 
                }
             })
