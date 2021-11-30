@@ -57,6 +57,10 @@ function getCocktails(e) {
                 break;
             case 'category':
                 serverResponse = cocktail.getDrinksByCategoey(searchTerm);
+                break;
+            case 'alcohol':
+                serverResponse = cocktail.getDrinksByAlcohol(searchTerm);
+                break;
         }
 
         ui.clearResults();

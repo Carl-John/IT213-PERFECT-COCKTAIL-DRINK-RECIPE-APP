@@ -59,4 +59,16 @@ class CocktailAPI{
             cocktails
         }
     }
+
+    //Get alcohol or non alcohol drinks
+    async getDrinksByAlcohol(term) {
+        //Search by Category
+        const apiResponse = await fetch(`http://www.thecocktaildb.com/api/json/v1/1/filter.php?a=${term}`);
+        //Wait for response then return JSON
+        const cocktails = await apiResponse.json();
+
+        return {
+            cocktails
+        }
+    }
 }
