@@ -47,4 +47,16 @@ class CocktailAPI{
             categories
         }
     }
+
+    //Get Drinks By Category
+    async getDrinksByCategpry(category) {
+        //Search by Category
+        const apiResponse = await fetch(`http://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`);
+        //Wait for response then return JSON
+        const cocktails = await apiResponse.json();
+
+        return {
+            cocktails
+        }
+    }
 }

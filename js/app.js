@@ -55,6 +55,8 @@ function getCocktails(e) {
             case 'ingredient':
                 serverResponse = cocktail.getDrinksByIngredient(searchTerm);
                 break;
+            case 'category':
+                serverResponse = cocktail.getDrinksByCategoey(searchTerm);
         }
 
         ui.clearResults();
