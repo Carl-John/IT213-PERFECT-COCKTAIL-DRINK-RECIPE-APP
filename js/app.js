@@ -134,4 +134,12 @@ function documentReady() {
         ui.displayCategories();
     }
 
+    //When favorites page
+    const favoritesTable = document.querySelector('#favorites');
+    if(favoritesTable) {
+        //Get the favorites from storage and display
+        const drinks = cocktailDB.getFromDB();
+        ui.displayFavorites(drinks);
+    }
+
 }
