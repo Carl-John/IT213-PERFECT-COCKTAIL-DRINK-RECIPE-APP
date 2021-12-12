@@ -1,35 +1,34 @@
-class CocktailDB{
+class CocktailDB {
 
     // Save the recipes into local storage
     saveIntoDB(drink) {
         const drinks = this.getFromDB();
-
+        
         drinks.push(drink);
 
-        // Add the new array into the localstorage
-        localStorage.setItem('drinks', JSON.stringify(drinks) );
+        // Add the new array into the local storatge
+        localStorage.setItem('drinks', JSON.stringify(drinks));
     }
 
-    // Removes element from the Local Storage
+    // Removes element from the local storage
     removeFromDB(id) {
         const drinks = this.getFromDB();
 
-        //Loop
+        // Loop
         drinks.forEach((drink, index) => {
             if(id === drink.id) {
                 drinks.splice(index, 1);
             }
-        } );
-            // Set the array into local storage
-            localStorage.setItem('drinks', JSON.stringify(drinks) );
+        });
+        // Set the array into local storage
+        localStorage.setItem('drinks', JSON.stringify(drinks));
     }
 
-    // Return recipes from storage
-    getFromDB(){
+    getFromDB() {
         let drinks;
-        // Check from localstorage
+        // Check from local storage
 
-        if(localStorage.getItem('drinks') === null) {
+        if(localStorage.getItem('drinks') ===  null) {
             drinks = [];
         } else {
             drinks = JSON.parse( localStorage.getItem('drinks') );
@@ -37,4 +36,3 @@ class CocktailDB{
         return drinks;
     }
 }
-

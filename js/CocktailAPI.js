@@ -1,44 +1,48 @@
+const proxyURL = "https://romel-acopra.herokuapp.com/";
+
 class CocktailAPI{
     // Get recipe by name
-   async getDrinksByName(name){
+    async getDrinksByName(name){
         // Search by name
-        const apiResponse = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`);
-        // Return a json response
+        const apiResponse = await fetch(`${proxyURL}https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`)
+        
+        // Returns a json response
         const cocktails = await apiResponse.json();
-
-        return{
+        
+        return {
+            cocktails
+        }
+        
+    }
+    
+    // Get recipes by ingredient
+    async getDrinksByIngredient(ingredient){
+        // Search by Ingredient
+        const apiResponse = await fetch(`${proxyURL}https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`);
+        // Wait for response then return json
+        const cocktails = await apiResponse.json();
+        
+        return {
             cocktails
         }
     }
 
-    // Get recipes by ingredient
-    async getDrinksByIngredients(ingredient) {
-        // Search by Ingredient
-        const apiResponse = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`);
-        // wait for response then return JSON
-        const cocktails = await apiResponse.json();
-
-        return {
-            cocktails 
-        }
-    }
-
     // get single recipe
-    async getSingleRecipe(id) {
+    async getSingleRecipe(id){
         // Search by Ingredient
-        const apiResponse = await fetch(`http://${id}`);
-        // wait for response then return JSON
+        const apiResponse = await fetch(`${proxyURL}https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`);
+        // Wait for response then return json
         const recipe = await apiResponse.json();
-
+        
         return {
-            recipe 
+            recipe
         }
     }
 
-    //Retrieves all the Categories from the REST API
+    // Retrieves all the categories from the API
     async getCategories() {
-        const apiResponse = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list`);
-        // Wait for response and return JSON
+        const apiResponse = await fetch(`${proxyURL}https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list`);
+        // wait for the response and return json
         const categories = await apiResponse.json();
 
         return {
@@ -46,28 +50,28 @@ class CocktailAPI{
         }
     }
 
-    // Get Drinks By Category
-    async getDrinksByCategory(category){
-         // Search by Category
-         const apiResponse = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`);
-             // Wait for response then return JSON
+    // Get Drinks by Category
+    async getDrinksByCategory(category) {
+        // Search by category
+        const apiResponse = await fetch(`${proxyURL}https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`);
+        // Wait for response then return json
         const cocktails = await apiResponse.json();
-
+        
         return {
-            cocktails 
-        }   
+            cocktails
+        }
     }
 
     // Get alcohol or non alcohol drinks
-    async getDrinksByAlcohol(term){
-        // Search by Category
-        const apiResponse = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=${term}`);
-        // Wait for response then return JSON
-   const cocktails = await apiResponse.json();
-
-   return {
-       cocktails 
+    async getDrinksByAlcohol(term) {
+        // Search by category
+        const apiResponse = await fetch(`${proxyURL}https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=${term}`);
+        // Wait for response then return json
+        const cocktails = await apiResponse.json();
+        
+        return {
+            cocktails
+        }
     }
-  }
 }
 
